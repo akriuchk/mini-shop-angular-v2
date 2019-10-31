@@ -1,0 +1,33 @@
+<mat-card class="example-card">
+    <img mat-card-image src="https://kpb-catalog.herokuapp.com/image/55" alt="Photo of a item Inu">
+    <mat-card-content>
+        <p class="mat-title">{{linen.name}}</p>
+    </mat-card-content>
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="flex-start">
+        <button mat-button>
+                <div *ngIf="linen.smallAvailable; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock><mat-icon class="icon-color-ok">done</mat-icon></ng-template>
+                <ng-template #elseBlock><mat-icon class="icon-color-stop">highlight_off</mat-icon></ng-template>
+            <span>SMALL TYPE</span>
+        </button>
+        <button mat-button>
+                <div *ngIf="linen.middleAvailable; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock><mat-icon class="icon-color-ok">done</mat-icon></ng-template>
+                <ng-template #elseBlock><mat-icon class="icon-color-stop">highlight_off</mat-icon></ng-template>
+            <span>MEDIUM TYPE</span>
+        </button>
+        <button mat-button>
+                <div *ngIf="linen.duoAvailable; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock><mat-icon class="icon-color-ok">done</mat-icon></ng-template>
+                <ng-template #elseBlock><mat-icon class="icon-color-stop">highlight_off</mat-icon></ng-template>
+            <span>DUO TYPE</span>
+        </button>
+        <button mat-button>
+                <div *ngIf="linen.euroAvailable; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock><mat-icon class="icon-color-ok">done</mat-icon></ng-template>
+                <ng-template #elseBlock><mat-icon class="icon-color-stop">highlight_off</mat-icon></ng-template>
+            <span>EURO TYPE</span>
+        </button>
+        <!-- <button mat-button [disabled]="true"><mat-icon class="icon-color-stop ">highlight_off</mat-icon><span>SPECIAL</span></button> -->
+    </div>
+</mat-card>

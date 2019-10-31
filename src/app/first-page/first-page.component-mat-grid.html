@@ -1,0 +1,5 @@
+<mat-grid-list cols="3" md-cols-gt-md="4" md-cols-md="2" md-cols-sm="1" md-gutter="4px">
+    <mat-grid-tile *ngFor="let item of items" [colspan]="1" [rowspan]="1">
+        <app-item-card [item]=item></app-item-card>
+    </mat-grid-tile>
+</mat-grid-list>
