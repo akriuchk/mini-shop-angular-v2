@@ -8,10 +8,9 @@
             <!-- <input [(ngModel)]="catalog.name" placeholder="name"/> -->
           </label>
     </div>
-</div>
-
-<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutAlign="flex-start" class="container">
-    <ng-container *ngFor="let linen of catalog.linens">
-        <app-item-card [linen]=linen fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%"></app-item-card>
-    </ng-container>
+    <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="16px " fxLayoutAlign="flex-start " class="container ">
+        <ng-container *ngFor="let linen of catalog.linens ">
+            <app-item-card [linen]=linen fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) " fxFlex.lt-sm="100% "></app-item-card>
+        </ng-container>
+    </div>
 </div>

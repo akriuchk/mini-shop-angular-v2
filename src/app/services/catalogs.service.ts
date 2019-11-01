@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Catalog } from '../model/catalog';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CatalogsService {
-  private bedsheetsUrl: string;
-  private imagesUrl: string;
+  private readonly bedsheetsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.bedsheetsUrl = 'https://kpb-catalog.herokuapp.com/catalog';
-    this.imagesUrl = 'http://localhost:8080/image';
+    this.bedsheetsUrl = environment.apiUrl + 'catalog';
   }
- 
-  public findAll(): Observable<Catalog[]> {
-    return this.http.get<Catalog[]>(this.bedsheetsUrl);
+
+  public findAll(onlyAvailable: string): Observable<HttpResponse<any>> {
+    const params = { onlyAvailable }
+    return this.http.get(this.bedsheetsUrl, {
+      params,
+      observe: 'response'
+    });
   }
+
+  // public findAll(): Observable<Catalog[]> {
+  //   return this.http.get<Catalog[]>(this.bedsheetsUrl)
+  //   ;
+  // }
 }
