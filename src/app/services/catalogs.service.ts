@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Catalog } from '../model/catalog';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -19,9 +18,4 @@ export class CatalogsService {
       observe: 'response'
     });
   }
-
-  // public findAll(): Observable<Catalog[]> {
-  //   return this.http.get<Catalog[]>(this.bedsheetsUrl)
-  //   ;
-  // }
 }
