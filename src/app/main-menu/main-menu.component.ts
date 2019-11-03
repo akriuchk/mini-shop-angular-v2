@@ -28,7 +28,7 @@ export class MainMenuComponent implements OnInit {
       .pipe()
       .subscribe((response: HttpResponse<any>) => {
         if (response.body) {
-          this.catalogList = response.body
+          this.catalogList = response.body;
         }
       });
   }

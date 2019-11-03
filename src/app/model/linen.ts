@@ -6,7 +6,6 @@ export class Linen {
     euroAvailable: boolean;
     duoAvailable: boolean;
     image: number;
-    imageUrl: string = "https://material.angular.io/assets/img/examples/shiba2.jpg";
 
     constructor(id: number,
         name: string,
@@ -23,5 +22,4 @@ export class Linen {
         this.duoAvailable = duoAvailable;
         this.image = image;
     }
-
 }
