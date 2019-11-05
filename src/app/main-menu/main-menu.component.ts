@@ -15,11 +15,41 @@ export class MainMenuComponent implements OnInit {
   catalogList: Catalog[];
   selectedCatalog: Catalog;
 
+  showOneCatalog = true;
+  showUploadPage = false;
+  showCatalogTable = false;
+  showLinenSearch = false;
+
   /**
    * onSelect
    */
   onSelect(catalog: Catalog): void {
+    this.showOneCatalog = true;
+    this.showUploadPage = false;
+    this.showCatalogTable = false;
+    this.showLinenSearch = false;
     this.selectedCatalog = catalog;
+  }
+
+  onShowCatalog(): void {
+    this.showOneCatalog = false;
+    this.showUploadPage = false;
+    this.showCatalogTable = true;
+    this.showLinenSearch = false;
+  }
+
+  onUploadSelect(): void {
+    this.showOneCatalog = false;
+    this.showUploadPage = true;
+    this.showCatalogTable = false;
+    this.showLinenSearch = false;
+  }
+
+  onSearchSelect(): void {
+    this.showOneCatalog = false;
+    this.showUploadPage = false;
+    this.showCatalogTable = false;
+    this.showLinenSearch = true;
   }
 
 

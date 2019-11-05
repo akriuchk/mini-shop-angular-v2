@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ImagesService {
-    private readonly imagesEndpoint: string;
+  private readonly imagesEndpoint: string;
 
   constructor(private http: HttpClient) {
     this.imagesEndpoint = environment.apiUrl + 'image';

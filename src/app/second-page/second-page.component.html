@@ -6,11 +6,22 @@
     <div>
         <label>name: {{catalog.name}}
             <!-- <input [(ngModel)]="catalog.name" placeholder="name"/> -->
-          </label>
+        </label>
     </div>
-    <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="16px " fxLayoutAlign="flex-start " class="container ">
-        <ng-container *ngFor="let linen of catalog.linens ">
-            <app-item-card [linen]=linen fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) " fxFlex.lt-sm="100% "></app-item-card>
+
+    <mat-chip-list #chipList [(ngModel)]="availableSizes" multiple aria-label="Fish selection">
+        <mat-chip *ngFor="let sizeChip of availableSizes" 
+            [selected]="isSelected(sizeChip)"
+            (focus)="selectSize(sizeChip)">
+            {{sizeChip.name}}
+        </mat-chip>
+    </mat-chip-list>
+
+    <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="16px " fxLayoutAlign="flex-start "
+        class="container " [(ngModel)]="availableSizes" ngDefaultControl>
+        <ng-container *ngFor="let linen of getLinensFiltered()">
+            <app-item-card [linen]=linen fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) "
+                fxFlex.lt-sm="100% "></app-item-card>
         </ng-container>
     </div>
 </div>

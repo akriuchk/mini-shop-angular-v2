@@ -3,6 +3,10 @@
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
             <a mat-list-item *ngFor="let catalog of catalogList" (click)="onSelect(catalog)">{{catalog.name}}</a>
+            <mat-divider [inset]="false"></mat-divider>
+            <a mat-list-item (click)="onUploadSelect()">Catalog upload</a>
+            <a mat-list-item (click)="onShowCatalog()">Show catalog</a>
+            <a mat-list-item (click)="onSearchSelect()">Search linen</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -12,6 +16,9 @@
             </button>
             <span>mini-shop</span>
         </mat-toolbar>
-        <second-page [catalog]="selectedCatalog"></second-page>
+        <second-page *ngIf="showOneCatalog" [catalog]="selectedCatalog"></second-page>
+        <file-upload-page *ngIf="showUploadPage" ></file-upload-page>
+        <app-linen-catalog-table *ngIf="showCatalogTable"></app-linen-catalog-table>
+        <app-linen-byname-search *ngIf="showLinenSearch"></app-linen-byname-search>
     </mat-sidenav-content>
 </mat-sidenav-container>

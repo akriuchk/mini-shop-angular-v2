@@ -7,6 +7,8 @@ export class Linen {
     duoAvailable: boolean;
     image: number;
 
+    
+
     constructor(id: number,
         name: string,
         smallAvailable: boolean,

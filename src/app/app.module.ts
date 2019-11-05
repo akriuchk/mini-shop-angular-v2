@@ -13,38 +13,66 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from "@angular/material/card";
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio'
 import { ItemCardComponent } from './item-card/item-card.component';
-import { FirstPageComponent } from './first-page/first-page.component';
 import { CatalogPageComponent } from './second-page/second-page.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CatalogsService } from './services/catalogs.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadService } from './services/file-upload-service.service';
+import { LinenCatalogTableComponent } from './linen-catalog-table/linen-catalog-table.component';
+import { LinenBynameSearchComponent } from './linen-byname-search/linen-byname-search.component';
+import {
+  MatAutocompleteModule, MatChipsModule, MatInputModule, MatPaginatorModule,
+  MatSortModule, MatTableModule
+} from "@angular/material";
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
-    FirstPageComponent,
     CatalogPageComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    FileUploadComponent,
+    LinenCatalogTableComponent,
+    LinenBynameSearchComponent
   ],
   imports: [
-    BrowserModule,
-    FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FlexLayoutModule,
+    FormsModule,
+    HttpClientModule,
     LayoutModule,
-    MatToolbarModule,
+    MatAutocompleteModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     MatCardModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatGridListModule,
-    HttpClientModule
+    MatListModule,
+    MatProgressBarModule,
+    MatRadioModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
   ],
-  providers: [CatalogsService],
-  bootstrap: [AppComponent]
+  providers: [CatalogsService, FileUploadService],
+  bootstrap: [AppComponent],
+  exports: [
+    MatSortModule
+  ]
 })
 export class AppModule { }

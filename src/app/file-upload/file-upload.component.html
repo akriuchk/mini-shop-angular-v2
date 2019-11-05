@@ -1,0 +1,33 @@
+<h3 class="header">Catalog upload</h3>
+<p class="body">
+    Provide excel catalog file to update state of items!
+</p>
+
+<div fxLayout="column" fxLayoutAlign="flex-start" class="container uploadfilecontainer" (click)="fileInput.click()">
+
+    <ng-container *ngIf="!fileToUpload; else fileSelectedTemplate">
+        Click here to upload file!
+    </ng-container>
+    <ng-template #fileSelectedTemplate>
+        <div>{{fileToUpload.name}}</div>
+        <div>You can still change file clicking here</div>
+    </ng-template>
+    <input hidden type="file" #fileInput (change)="handleFileSelect($event.target.files)">
+
+    <mat-progress-bar *ngIf="uploadInProgress" class="example-margin" [color]="color" [mode]="mode">
+    </mat-progress-bar>
+</div>
+<div class="catalogSelectorContainer">
+    <mat-selection-list #selectCatalog [(ngModel)]="selectedCatalogsToUpload">
+        <mat-list-option *ngFor="let catalog of catalogs" [value]="catalog">
+                <mat-icon matListIcon>chevron_right</mat-icon>
+                <p matLine>{{catalog}}</p>
+        </mat-list-option>
+    </mat-selection-list>
+    <button [disabled]="uploadBlocked() || uploadInProgress" class="uplBtn" mat-raised-button color="primary" (click)="startFileUpload()">Upload</button>
+    <ng-container *ngIf="errorMessage">{{errorMessage}}</ng-container>
+    
+</div>
+<div>
+    <app-linen-catalog-table [catalogsInput]="parsedCatalogs"></app-linen-catalog-table>
+</div>
