@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Linen } from '../model/linen';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-item-card',
@@ -16,7 +16,11 @@ export class ItemCardComponent implements OnInit {
 
   ngOnInit() {
     this.apiUrl = environment.apiUrl;
-    this.imageUrl = `${this.apiUrl}images/${this.linen.image}`;
+    if (this.linen.images.length != 0) {
+      this.imageUrl = `${this.apiUrl}image/${this.linen.images[0]}`;
+    } else {
+      this.imageUrl = "assets/not-available.png";
+    }
   }
   
   set404forImage() {

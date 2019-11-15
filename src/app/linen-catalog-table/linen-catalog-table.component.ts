@@ -18,15 +18,13 @@ export class LinenCatalogTableComponent implements OnInit {
   constructor(private catalogService: CatalogsService) { }
 
   ngOnInit() {
-    this.catalogService.findAll('true')
+    this.catalogService.findAll('false')
       .pipe()
       .subscribe((response: HttpResponse<any>) => {
         if (response.body) {
           this.catalogsInput = response.body;
           Array.from(this.catalogsInput).forEach(catalog => {
             catalog.linenDatasource = new MatTableDataSource(catalog.linens);
-            console.log('array length', catalog.linenDatasource.data.length);
-
           });
         }
       });

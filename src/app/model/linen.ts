@@ -5,7 +5,7 @@ export class Linen {
     middleAvailable: boolean;
     euroAvailable: boolean;
     duoAvailable: boolean;
-    image: number;
+    images: number[];
 
     
 
@@ -15,13 +15,13 @@ export class Linen {
         middleAvailable: boolean,
         euroAvailable: boolean,
         duoAvailable: boolean,
-        image: number) {
+        images: number[]) {
         this.id = id;
         this.name = name;
         this.smallAvailable = smallAvailable;
         this.middleAvailable = middleAvailable;
         this.euroAvailable = euroAvailable;
         this.duoAvailable = duoAvailable;
-        this.image = image;
+        this.images = images;
     }
 }

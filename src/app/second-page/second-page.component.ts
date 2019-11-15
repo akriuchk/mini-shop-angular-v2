@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Catalog } from '../model/catalog';
 import { Linen } from '../model/linen';
 
@@ -9,8 +9,6 @@ import { Linen } from '../model/linen';
 })
 export class CatalogPageComponent implements OnInit {
   @Input() catalog: Catalog;
-  selectedSizes: any[] = [];
-
   availableSizes = [
     { name: 'Small', selected: false },
     { name: 'Medium', selected: false },
@@ -23,46 +21,51 @@ export class CatalogPageComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  
   getLinensFiltered(): Linen[] {
-    // console.log('linens', this.catalog.linens);
-
-    let linens = this.catalog.linens.filter(linen => 
+    let linens = this.catalog.linens.filter(linen => {
+      if (this.availableSizes.find(availableSize => availableSize.name == 'Small').selected) {
+        return linen.smallAvailable === true
+      }
+      if (this.availableSizes.find(availableSize => availableSize.name == 'Medium').selected) {
+        return linen.middleAvailable === true
+      }
+      if (this.availableSizes.find(availableSize => availableSize.name == 'Euro').selected) {
+        return linen.euroAvailable === true
+      }
+      if (this.availableSizes.find(availableSize => availableSize.name == 'Duo').selected) {
+        return linen.duoAvailable === true
+      }
       
-      linen.smallAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Small').selected
-      || linen.middleAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Medium').selected 
-      || linen.duoAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Duo').selected 
-      || linen.euroAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Euro').selected
-    );
-    
-    // console.log('linens after', linens); 
-    
+
+      // linen.smallAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Small').selected
+      // || linen.middleAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Medium').selected
+      // || linen.duoAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Duo').selected
+      // || linen.euroAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Euro').selected
+    });
+    if (linens.length == 0) {
+      return this.catalog.linens;
+    }
     return linens
   }
 
-
   isSelected(size: any): boolean {
-    const index = this.selectedSizes.indexOf(size);
-    // return index >= 0;
     return this.availableSizes.find(availableSize => availableSize === size).selected;
   }
 
   selectSize(size: any): void {
-    console.log('Selected: ', size.name, size.selected);
-    
-    let selectedSize = this.availableSizes.find(availableSize => availableSize === size)
-    selectedSize.selected = !selectedSize.selected;
-
-    console.log('Selected: ', size.name, size.selected);
-
-    let index = this.selectedSizes.indexOf(size);
-
-    if (index >= 0) {
-      this.selectedSizes.splice(index, 1);
-    } else {
-      this.selectedSizes.push(size);
-    }
+    console.log('Button Selected: ', size.name, size.selected);
+    this.availableSizes.forEach(availableSize => {
+      if (availableSize.name === size.name) {
+        availableSize.selected = !size.selected;
+        console.log('Selected: ', availableSize.name, availableSize.selected);
+      } else {
+        availableSize.selected = false;
+        console.log('Selected: ', availableSize.name, availableSize.selected);
+      }
+    })
   }
 
+  cleanUpSelection(): void {
+    this.availableSizes.forEach(availableSize => availableSize.selected = false);
+  }
 }

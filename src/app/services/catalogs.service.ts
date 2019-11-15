@@ -40,7 +40,7 @@ export class CatalogsService {
   PARSER_MAP = {
     'Vasilisa bjaz': "VASILISA_BYAZ",
     'Vasilisa satin': 'DEFAULT',
-    'Disney': 'DEFAULT',
+    'Disney': 'DISNEY',
     'Perkal': 'DEFAULT',
     'Poplin': 'DEFAULT'
   };

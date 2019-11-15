@@ -4,7 +4,6 @@
 </p>
 
 <div fxLayout="column" fxLayoutAlign="flex-start" class="container uploadfilecontainer" (click)="fileInput.click()">
-
     <ng-container *ngIf="!fileToUpload; else fileSelectedTemplate">
         Click here to upload file!
     </ng-container>
@@ -26,8 +25,7 @@
     </mat-selection-list>
     <button [disabled]="uploadBlocked() || uploadInProgress" class="uplBtn" mat-raised-button color="primary" (click)="startFileUpload()">Upload</button>
     <ng-container *ngIf="errorMessage">{{errorMessage}}</ng-container>
-    
 </div>
-<div>
+<div *ngIf="parsedCatalogs">
     <app-linen-catalog-table [catalogsInput]="parsedCatalogs"></app-linen-catalog-table>
 </div>
