@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CatalogPageComponent } from './second-page/second-page.component';
+import { TutorPageComponent } from './tutor-page/tutor-page.component';
 
 const appRoutes: Routes = [
-  {path: 'second-page', component: CatalogPageComponent} 
+  {path: 'second-page', component: CatalogPageComponent}
 ]
 
 @NgModule({

@@ -1,0 +1,26 @@
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.icon-color-ok {
+    color: #EE5C00;
+}
+
+.icon-color-stop {
+    color: #FFCEB9;
+}
+
+.example-card mat-slide-toggle {
+    margin: 8px 0;
+    display: block;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}

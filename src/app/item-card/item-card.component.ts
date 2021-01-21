@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Linen } from '../model/linen';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 @Component({
   selector: 'app-item-card',
@@ -8,11 +10,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./item-card.component.scss']
 })
 export class ItemCardComponent implements OnInit {
-  @Input() linen: Linen;
+  
+  @Input() public linen: Linen;
+
   apiUrl: string;
   imageUrl: string;
 
-  constructor() {}
+  constructor(
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.apiUrl = environment.apiUrl;
@@ -25,6 +31,17 @@ export class ItemCardComponent implements OnInit {
   
   set404forImage() {
     this.imageUrl = "assets/not-available.png";
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      data: this.linen
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 
 }

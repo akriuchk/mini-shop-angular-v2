@@ -8,26 +8,27 @@
                 <div *ngIf="linen.smallAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
-            <span>SMALL TYPE</span>
+            <span>SMALL</span>
         </button>
         <button mat-button>
                 <div *ngIf="linen.middleAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
-            <span>MEDIUM TYPE</span>
+            <span>MEDIUM</span>
         </button>
         <button mat-button>
                 <div *ngIf="linen.duoAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
-            <span>DUO TYPE</span>
+            <span>DUO</span>
         </button>
         <button mat-button>
                 <div *ngIf="linen.euroAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
-            <span>EURO TYPE</span>
+            <span>EURO</span>
         </button>
-        <!-- <button mat-button [disabled]="true "><mat-icon class="icon-color-stop ">highlight_off</mat-icon><span>SPECIAL</span></button> -->
     </div>
+
+    <button mat-button (click)="openDialog()"><mat-icon class="icon-color-stop ">create</mat-icon><span>EDIT</span></button>
 </mat-card>

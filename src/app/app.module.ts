@@ -26,10 +26,13 @@ import { FileUploadService } from './services/file-upload-service.service';
 import { LinenCatalogTableComponent } from './linen-catalog-table/linen-catalog-table.component';
 import { LinenBynameSearchComponent } from './linen-byname-search/linen-byname-search.component';
 import {
-  MatAutocompleteModule, MatChipsModule, MatInputModule, MatPaginatorModule,
+  MatAutocompleteModule, MatChipsModule, MatDialog, MatDialogModule, MatInputModule, MatPaginatorModule,
+  MatSlideToggleModule,
   MatSortModule, MatTableModule
 } from "@angular/material";
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TutorPageComponent } from './tutor-page/tutor-page.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -41,7 +44,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ItemCardComponent,
     FileUploadComponent,
     LinenCatalogTableComponent,
-    LinenBynameSearchComponent
+    LinenBynameSearchComponent,
+    TutorPageComponent,
+    EditProductComponent
   ],
   imports: [
     AppRoutingModule,
@@ -55,6 +60,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
+    MatDialogModule,
     MatExpansionModule,
     MatIconModule,
     MatInputModule,
@@ -66,6 +72,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatProgressBarModule,
     MatRadioModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
   ],
@@ -73,6 +80,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
   bootstrap: [AppComponent],
   exports: [
     MatSortModule
+  ],
+  entryComponents: [
+    EditProductComponent
   ]
 })
 export class AppModule { }

@@ -19,6 +19,7 @@ export class MainMenuComponent implements OnInit {
   showUploadPage = false;
   showCatalogTable = false;
   showLinenSearch = false;
+  showTutorPage = false;
 
   /**
    * onSelect
@@ -28,6 +29,7 @@ export class MainMenuComponent implements OnInit {
     this.showUploadPage = false;
     this.showCatalogTable = false;
     this.showLinenSearch = false;
+    this.showTutorPage = false;
     this.selectedCatalog = catalog;
   }
 
@@ -36,6 +38,7 @@ export class MainMenuComponent implements OnInit {
     this.showUploadPage = false;
     this.showCatalogTable = true;
     this.showLinenSearch = false;
+    this.showTutorPage = false;
   }
 
   onUploadSelect(): void {
@@ -43,6 +46,7 @@ export class MainMenuComponent implements OnInit {
     this.showUploadPage = true;
     this.showCatalogTable = false;
     this.showLinenSearch = false;
+    this.showTutorPage = false;
   }
 
   onSearchSelect(): void {
@@ -50,6 +54,15 @@ export class MainMenuComponent implements OnInit {
     this.showUploadPage = false;
     this.showCatalogTable = false;
     this.showLinenSearch = true;
+    this.showTutorPage = false;
+  }
+
+  onTutor(): void {
+    this.showOneCatalog = false;
+    this.showUploadPage = false;
+    this.showCatalogTable = false;
+    this.showLinenSearch = false;
+    this.showTutorPage = true;
   }
 
 

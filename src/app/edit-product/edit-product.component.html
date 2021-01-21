@@ -1,0 +1,52 @@
+<mat-card class="example-card">
+    <img mat-card-image [src]="imageUrl" alt="Photo of a item Inu " />
+    <mat-card-content>
+        <p class="mat-title ">{{linen.name}}</p>
+    </mat-card-content>
+
+    <td></td>
+
+
+    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSaveClick()">
+        <table >
+                <tr>
+                    <td>SMALL</td>
+                    <td>
+                        <mat-slide-toggle [labelPosition]="'before'" formControlName="smallAvailable"
+                            [checked]="linen.middleAvailable"></mat-slide-toggle>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MEDIUM</td>
+                    <td>
+                        <mat-slide-toggle [labelPosition]="'before'" formControlName="middleAvailable"
+                            [checked]="linen.middleAvailable"></mat-slide-toggle>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>DUO</td>
+                    <td>
+                        <mat-slide-toggle [labelPosition]="'before'" formControlName="duoAvailable"
+                            [checked]="linen.duoAvailable">
+                        </mat-slide-toggle>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>EURO</td>
+                    <td>
+                        <mat-slide-toggle [labelPosition]="'before'" formControlName="euroAvailable"
+                            [checked]="linen.euroAvailable">
+                        </mat-slide-toggle>
+                    </td>
+                </tr>
+
+        </table>
+        <button mat-button  type="submit">
+            <mat-icon class="icon-color-ok ">done</mat-icon>
+            <span>SAVE</span>
+        </button>
+    </form>
+</mat-card>
