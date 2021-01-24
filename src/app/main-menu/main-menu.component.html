@@ -2,12 +2,12 @@
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list >
-            <a mat-list-item *ngFor="let catalog of catalogList" (click)="onSelect(catalog)">{{catalog.name}}</a>
+            <a mat-list-item *ngFor="let catalog of catalogList" (click)="onSelect(catalog)">{{catalog.displayName}}</a>
             <mat-divider [inset]="false"></mat-divider>
-            <a mat-list-item (click)="onUploadSelect()">Catalog upload</a>
-            <a mat-list-item (click)="onShowCatalog()">Show catalog</a>
-            <a mat-list-item (click)="onSearchSelect()">Search linen</a>
-            <a mat-list-item (click)="onTutor()">Tutor page</a>
+            <a mat-list-item routerLink="/upload" routerLinkActive="active">Catalog upload</a>
+            <a mat-list-item routerLink="/catalog" routerLinkActive="active" [state]="selectedCatalog" >Show catalog</a>
+            <a mat-list-item routerLink="/linenSearch" routerLinkActive="active">Search linen</a>
+            <a mat-list-item routerLink="/tutor" routerLinkActive="active">Tutor page</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -16,11 +16,14 @@
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <span>mini-shop</span>
+            <span class="fill-remaining-space"></span>
+            <span><a mat-button routerLink="/signin" routerLinkActive="active">Signin</a></span>
         </mat-toolbar>
-        <second-page *ngIf="showOneCatalog" [catalog]="selectedCatalog"></second-page>
+        <!-- <second-page *ngIf="showOneCatalog" [catalog]="selectedCatalog"></second-page>
         <file-upload-page *ngIf="showUploadPage" ></file-upload-page>
         <app-linen-catalog-table *ngIf="showCatalogTable"></app-linen-catalog-table>
         <app-linen-byname-search *ngIf="showLinenSearch"></app-linen-byname-search>
-        <app-tutor-page *ngIf="showTutorPage"></app-tutor-page >
+        <app-tutor-page *ngIf="showTutorPage"></app-tutor-page > -->
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

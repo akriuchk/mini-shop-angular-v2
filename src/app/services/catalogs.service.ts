@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { api } from 'src/environments/apis';
 
 @Injectable()
 export class CatalogsService {
@@ -14,7 +15,14 @@ export class CatalogsService {
     this.linenSearchByNameApi = environment.apiUrl + 'findByNameContainingIgnoreCase';
   }
 
-  public findAll(onlyAvailable: string): Observable<HttpResponse<any>> {
+
+  public findAll(): Observable<HttpResponse<any>> {
+    return this.http.get(api.categories, {
+      observe: 'response'
+    });
+  }
+
+  public findAllFilter(onlyAvailable: string): Observable<HttpResponse<any>> {
     const params = { onlyAvailable }
     return this.http.get(this.catalogApi, {
       params,
@@ -24,6 +32,7 @@ export class CatalogsService {
 
   public findLinenByNamePart(namePart: string): Observable<any> {
     const params = { namePart }
+
     return this.http.get(this.linenSearchByNameApi, {
       params,
       observe: 'response'

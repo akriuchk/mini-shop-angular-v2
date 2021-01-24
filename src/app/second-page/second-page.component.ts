@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Catalog } from '../model/catalog';
-import { Linen } from '../model/linen';
+import { Product } from '../model/linen';
 
 @Component({
   selector: 'second-page',
@@ -8,7 +9,7 @@ import { Linen } from '../model/linen';
   styleUrls: ['./second-page.component.scss']
 })
 export class CatalogPageComponent implements OnInit {
-  @Input() catalog: Catalog;
+  catalog: Catalog;
   availableSizes = [
     { name: 'Small', selected: false },
     { name: 'Medium', selected: false },
@@ -16,36 +17,43 @@ export class CatalogPageComponent implements OnInit {
     { name: 'Duo', selected: false }
   ];
 
-  constructor() { }
+  constructor(
+    private router: Router) {
+    console.time('someFunction');
+    var s = this.router.getCurrentNavigation().extras.state;
+    // console.log(s);
+    this.catalog = new Catalog(s.id, s.name, s.displayName, s.products);
+    console.timeEnd('someFunction');
+  }
 
   ngOnInit() {
   }
 
-  getLinensFiltered(): Linen[] {
-    let linens = this.catalog.linens.filter(linen => {
+  getProductsFiltered(): Product[] {
+    let products = this.catalog.products.filter(product => {
       if (this.availableSizes.find(availableSize => availableSize.name == 'Small').selected) {
-        return linen.smallAvailable === true
+        return product.smallAvailable === true
       }
       if (this.availableSizes.find(availableSize => availableSize.name == 'Medium').selected) {
-        return linen.middleAvailable === true
+        return product.middleAvailable === true
       }
       if (this.availableSizes.find(availableSize => availableSize.name == 'Euro').selected) {
-        return linen.euroAvailable === true
+        return product.euroAvailable === true
       }
       if (this.availableSizes.find(availableSize => availableSize.name == 'Duo').selected) {
-        return linen.duoAvailable === true
+        return product.duoAvailable === true
       }
-      
+
 
       // linen.smallAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Small').selected
       // || linen.middleAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Medium').selected
       // || linen.duoAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Duo').selected
       // || linen.euroAvailable === this.availableSizes.find(availableSize => availableSize.name == 'Euro').selected
     });
-    if (linens.length == 0) {
-      return this.catalog.linens;
+    if (products.length == 0) {
+      return this.catalog.products;
     }
-    return linens
+    return products
   }
 
   isSelected(size: any): boolean {

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Linen } from '../model/linen';
-import { environment } from 'src/environments/environment';
+import { Product } from '../model/linen';
 import { MatDialog } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
+import { api } from 'src/environments/apis';
 
 @Component({
   selector: 'app-item-card',
@@ -10,32 +10,27 @@ import { EditProductComponent } from '../edit-product/edit-product.component';
   styleUrls: ['./item-card.component.scss']
 })
 export class ItemCardComponent implements OnInit {
-  
-  @Input() public linen: Linen;
 
-  apiUrl: string;
+  @Input() public product: Product;
+
   imageUrl: string;
 
   constructor(
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.apiUrl = environment.apiUrl;
-    if (this.linen.images.length != 0) {
-      this.imageUrl = `${this.apiUrl}image/${this.linen.images[0]}`;
-    } else {
-      this.imageUrl = "assets/not-available.png";
+    if (this.product.images.length != 0) {
+      this.imageUrl = `${api.images}/${this.product.images[0].id}/raw`
     }
   }
-  
+
   set404forImage() {
     this.imageUrl = "assets/not-available.png";
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EditProductComponent, {
-      data: this.linen
+      data: this.product
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map, startWith, debounceTime, switchMap } from 'rxjs/operators';
 import { CatalogsService } from '../services/catalogs.service';
-import { Linen } from '../model/linen';
+import { Product } from '../model/linen';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
@@ -12,12 +12,12 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
   styleUrls: ['./linen-byname-search.component.scss']
 })
 export class LinenBynameSearchComponent implements OnInit {
-  public linenAutocomplete: Observable<Linen> = null;
+  public linenAutocomplete: Observable<Product> = null;
   public autoCompleteControl = new FormControl();
 
-  public selectedLinen: Linen
+  public selectedLinen: Product
 
-  lookup(value: string): Observable<Linen> {
+  lookup(value: string): Observable<Product> {
     return this.catalogService.findLinenByNamePart(value.toLowerCase()).pipe(
       map(results => results)
     );

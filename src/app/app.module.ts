@@ -19,7 +19,7 @@ import { ItemCardComponent } from './item-card/item-card.component';
 import { CatalogPageComponent } from './second-page/second-page.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CatalogsService } from './services/catalogs.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadService } from './services/file-upload-service.service';
@@ -27,12 +27,14 @@ import { LinenCatalogTableComponent } from './linen-catalog-table/linen-catalog-
 import { LinenBynameSearchComponent } from './linen-byname-search/linen-byname-search.component';
 import {
   MatAutocompleteModule, MatChipsModule, MatDialog, MatDialogModule, MatInputModule, MatPaginatorModule,
-  MatSlideToggleModule,
+  MatSlideToggleModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule
 } from "@angular/material";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TutorPageComponent } from './tutor-page/tutor-page.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { LoginComponent } from './login/login.component';
+import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
 
 
 
@@ -46,7 +48,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     LinenCatalogTableComponent,
     LinenBynameSearchComponent,
     TutorPageComponent,
-    EditProductComponent
+    EditProductComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -70,13 +73,18 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     MatGridListModule,
     MatListModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatRadioModule,
     MatSidenavModule,
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
   ],
-  providers: [CatalogsService, FileUploadService],
+  providers: [
+    CatalogsService,
+    FileUploadService,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
   exports: [
     MatSortModule

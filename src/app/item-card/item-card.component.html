@@ -1,29 +1,30 @@
-<mat-card class="example-card">
+<mat-card class="example-card">    
     <img mat-card-image [src]="imageUrl" (error)="set404forImage()" alt="Photo of a item Inu " />
     <mat-card-content>
-        <p class="mat-title ">{{linen.name}}</p>
+        <p class="mat-title ">{{product.name}}</p>
+        <p >{{product.category}}</p>
     </mat-card-content>
     <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start ">
         <button mat-button>
-                <div *ngIf="linen.smallAvailable; then thenBlock else elseBlock "></div>
+                <div *ngIf="product.smallAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
             <span>SMALL</span>
         </button>
         <button mat-button>
-                <div *ngIf="linen.middleAvailable; then thenBlock else elseBlock "></div>
+                <div *ngIf="product.middleAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
             <span>MEDIUM</span>
         </button>
         <button mat-button>
-                <div *ngIf="linen.duoAvailable; then thenBlock else elseBlock "></div>
+                <div *ngIf="product.duoAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
             <span>DUO</span>
         </button>
         <button mat-button>
-                <div *ngIf="linen.euroAvailable; then thenBlock else elseBlock "></div>
+                <div *ngIf="product.euroAvailable; then thenBlock else elseBlock "></div>
                 <ng-template #thenBlock><mat-icon class="icon-color-ok ">done</mat-icon></ng-template>
                 <ng-template #elseBlock><mat-icon class="icon-color-stop ">highlight_off</mat-icon></ng-template>
             <span>EURO</span>

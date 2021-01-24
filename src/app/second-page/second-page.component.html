@@ -1,7 +1,7 @@
 <div *ngIf="catalog">
 
     <h2>{{catalog.name}}</h2>
-    <h2>Total: {{catalog.linens.length}}</h2>
+    <h2>Total: {{catalog.products.length}}</h2>
     <div>
         <label>
             <!-- <input [(ngModel)]="catalog.name" placeholder="name"/> -->
@@ -17,10 +17,10 @@
         <mat-chip (focus)="cleanUpSelection()">Clear selection</mat-chip>
     </mat-chip-list>
 
-    <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="16px " fxLayoutAlign="flex-start "
-        class="container " [(ngModel)]="availableSizes" ngDefaultControl>
-        <ng-container *ngFor="let linen of getLinensFiltered()">
-            <app-item-card [linen]=linen fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) "
+    <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="16px grid" fxLayoutAlign="flex-start "
+        class="container padding:5px" [(ngModel)]="availableSizes" ngDefaultControl>
+        <ng-container *ngFor="let product of getProductsFiltered()">
+            <app-item-card [product]=product fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) "
                 fxFlex.lt-sm="100% "></app-item-card>
         </ng-container>
     </div>

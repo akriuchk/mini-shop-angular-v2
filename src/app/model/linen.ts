@@ -1,27 +1,13 @@
-export class Linen {
-    id: number;
-    name: string;
-    smallAvailable: boolean;
-    middleAvailable: boolean;
-    euroAvailable: boolean;
-    duoAvailable: boolean;
-    images: number[];
+import { Image } from "./image";
 
-    
-
-    constructor(id: number,
-        name: string,
-        smallAvailable: boolean,
-        middleAvailable: boolean,
-        euroAvailable: boolean,
-        duoAvailable: boolean,
-        images: number[]) {
-        this.id = id;
-        this.name = name;
-        this.smallAvailable = smallAvailable;
-        this.middleAvailable = middleAvailable;
-        this.euroAvailable = euroAvailable;
-        this.duoAvailable = duoAvailable;
-        this.images = images;
+export class Product {
+    constructor(public id: number,
+        public name: string,
+        public category: string,
+        public smallAvailable: boolean,
+        public middleAvailable: boolean,
+        public euroAvailable: boolean,
+        public duoAvailable: boolean,
+        public images: Image[]) {
     }
 }

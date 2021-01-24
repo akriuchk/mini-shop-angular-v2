@@ -1,16 +1,13 @@
-import { Linen } from './linen';
+import { Product } from './linen';
 import { MatTableDataSource } from '@angular/material';
 
 export class Catalog {
-    id: number;
-    name: string;
-    linens: Linen[];
-    linenDatasource: MatTableDataSource<Linen>;
+    linenDatasource: MatTableDataSource<Product>;
 
-
-    constructor(id: number, name: string , linens: Linen[]) {
-        this.id = id;
-        this.name = name;
-        this.linens = linens;
+    constructor(
+        public id: number,
+        public name: string,
+        public displayName: string,
+        public products: Product[]) {
     }
 }

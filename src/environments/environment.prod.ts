@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://kpb-catalog.herokuapp.com/'
+  apiUrl: 'https://kpb-catalog.herokuapp.com'
 };

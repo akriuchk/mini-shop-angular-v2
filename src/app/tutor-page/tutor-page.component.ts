@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { Linen } from '../model/linen';
+import { Product } from '../model/linen';
 
 
 import { Observable, BehaviorSubject, EMPTY } from 'rxjs';
@@ -14,7 +14,7 @@ import { tap, pluck } from 'rxjs/operators';
 })
 export class TutorPageComponent implements OnInit {
 
-  @Input() products: Linen[]
+  @Input() products: Product[]
   availableSizes = [
     { name: 'Small', selected: false },
     { name: 'Medium', selected: false },
@@ -32,7 +32,7 @@ export class TutorPageComponent implements OnInit {
 
 
   fetchProducts(): void {
-    this.http.get<Linen[]>("http://localhost:8081/products", {
+    this.http.get<Product[]>("http://localhost:8081/products", {
       observe: 'response'
     })
       .pipe(

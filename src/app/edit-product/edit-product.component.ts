@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { environment } from 'src/environments/environment';
-import { Linen } from '../model/linen';
+import { api } from 'src/environments/apis';
+import { Product } from '../model/linen';
 
 @Component({
   selector: 'app-edit-product',
@@ -11,38 +11,34 @@ import { Linen } from '../model/linen';
 })
 export class EditProductComponent implements OnInit {
   formGroup: FormGroup;
-  apiUrl: string;
   imageUrl: string;
 
   constructor(
     public dialogRef: MatDialogRef<EditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public linen: Linen,
+    @Inject(MAT_DIALOG_DATA) public product: Product,
     formBuilder: FormBuilder
   ) {
     this.formGroup = formBuilder.group({
-      smallAvailable: this.linen.smallAvailable,
-      middleAvailable: this.linen.middleAvailable,
-      duoAvailable: this.linen.duoAvailable,
-      euroAvailable: this.linen.euroAvailable
+      smallAvailable: this.product.smallAvailable,
+      middleAvailable: this.product.middleAvailable,
+      duoAvailable: this.product.duoAvailable,
+      euroAvailable: this.product.euroAvailable
     });
   }
 
   onSaveClick(): void {
-    this.linen.smallAvailable = this.formGroup.value.smallAvailable;
-    this.linen.middleAvailable = this.formGroup.value.middleAvailable;
-    this.linen.duoAvailable = this.formGroup.value.duoAvailable;
-    this.linen.euroAvailable = this.formGroup.value.euroAvailable;
+    this.product.smallAvailable = this.formGroup.value.smallAvailable;
+    this.product.middleAvailable = this.formGroup.value.middleAvailable;
+    this.product.duoAvailable = this.formGroup.value.duoAvailable;
+    this.product.euroAvailable = this.formGroup.value.euroAvailable;
 
-    console.log(this.linen);
+    console.log(this.product);
     this.dialogRef.close();
   }
 
   ngOnInit() {
-    this.apiUrl = environment.apiUrl;
-    if (this.linen.images.length != 0) {
-      this.imageUrl = `${this.apiUrl}image/${this.linen.images[0]}`;
-    } else {
-      this.imageUrl = "assets/not-available.png";
+    if (this.product.images.length != 0) {
+      this.imageUrl = `${api.images}/${this.product.images[0].id}/raw`
     }
   }
 
