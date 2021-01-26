@@ -1,0 +1,67 @@
+<div *ngIf="importDto">
+    <mat-accordion multi="true">
+        <mat-expansion-panel *ngFor="let category of importDto.result" [expanded]="true">
+            <mat-expansion-panel-header>
+                {{category.category.displayName}}
+            </mat-expansion-panel-header>
+
+            <mat-panel-description>
+                <ng-container *ngIf="category.updates.length === 0">empty!</ng-container>
+            </mat-panel-description>
+
+
+            <mat-table [dataSource]="category.updates" class="mat-elevation-z8">
+                <!-- name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> name. </mat-header-cell>
+                    <mat-cell *matCellDef="let productUpdate"> {{productUpdate.name}}
+                        <span *ngIf="productUpdate.isNew" class="new">Delivery!
+                            <span class="material-icons new-icon">change_history</span>
+                        </span></mat-cell>
+                </ng-container>
+
+                <!-- 1SP Column -->
+                <ng-container matColumnDef="1SP">
+                    <mat-header-cell *matHeaderCellDef> 1SP </mat-header-cell>
+                    <mat-cell *matCellDef="let productUpdate">
+                        <app-availability-status-icon [isAvailable]="productUpdate.smallAvailable">
+                        </app-availability-status-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- 2SP Column -->
+                <ng-container matColumnDef="2SP">
+                    <mat-header-cell *matHeaderCellDef> 2SP </mat-header-cell>
+                    <mat-cell *matCellDef="let productUpdate">
+                        <app-availability-status-icon [isAvailable]="productUpdate.middleAvailable">
+                        </app-availability-status-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- EURO Column -->
+                <ng-container matColumnDef="EURO">
+                    <mat-header-cell *matHeaderCellDef> EURO </mat-header-cell>
+                    <mat-cell *matCellDef="let productUpdate">
+                        <app-availability-status-icon [isAvailable]="productUpdate.euroAvailable">
+                        </app-availability-status-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- EURO Column -->
+                <ng-container matColumnDef="DUO">
+                    <mat-header-cell *matHeaderCellDef> DUO </mat-header-cell>
+                    <mat-cell *matCellDef="let productUpdate">
+                        <app-availability-status-icon [isAvailable]="productUpdate.duoAvailable">
+                        </app-availability-status-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>

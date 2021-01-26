@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Colors
+
+https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=fedbd0&secondary.color=feeae6&primary.text.color=442c2e&secondary.text.color=000000

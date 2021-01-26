@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Catalog } from '../model/catalog';
 import { FileUploadService } from '../services/file-upload-service.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatListOption } from '@angular/material/list';
 import { CatalogsService } from '../services/catalogs.service';
+import { ImportResultDto } from '../model/importFileDto';
 
 @Component({
   selector: 'file-upload-page',
@@ -11,12 +12,14 @@ import { CatalogsService } from '../services/catalogs.service';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
+  @ViewChild('fileInput',  {static: false}) 
+  fileInput: ElementRef;
 
   fileToUpload: File = null;
   catalogs: string[];
   selectedCatalogsToUpload: string;
   uploadInProgress: boolean = false;
-  parsedCatalogs: Catalog[];
+  parsedCatalogs: ImportResultDto;
 
   errorMessage: string;
 
@@ -31,6 +34,8 @@ export class FileUploadComponent implements OnInit {
 
   handleFileSelect(files: FileList) {
     this.fileToUpload = files[0];
+    this.cleanErrorMsg();
+    console.log("file selected: " + this.fileToUpload)
   }
 
   startFileUpload() {
@@ -43,9 +48,20 @@ export class FileUploadComponent implements OnInit {
         this.parsedCatalogs = response;
         this.uploadInProgress = false;
       }, error => {
-        this.errorMessage = error.error.message;
+        this.handleError(error)
         this.uploadInProgress = false;
       });
+  }
+
+  handleError(error: any) {
+    this.errorMessage = `Error! Details: ${error.error.message}`;
+    this.fileToUpload = null;
+    this.selectedCatalogsToUpload = null;
+  }
+
+  cleanErrorMsg() {
+    this.errorMessage = null;
+    this.fileInput.nativeElement.value='';
   }
 
   uploadBlocked(): boolean {

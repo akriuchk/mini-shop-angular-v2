@@ -35,6 +35,8 @@ import { TutorPageComponent } from './tutor-page/tutor-page.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { LoginComponent } from './login/login.component';
 import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
+import { ImportResultTableComponent } from './import-result-table/import-result-table.component';
+import { AvailabilityStatusIconComponent } from './availability-status-icon/availability-status-icon.component';
 
 
 
@@ -49,7 +51,9 @@ import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
     LinenBynameSearchComponent,
     TutorPageComponent,
     EditProductComponent,
-    LoginComponent
+    LoginComponent,
+    ImportResultTableComponent,
+    AvailabilityStatusIconComponent
   ],
   imports: [
     AppRoutingModule,

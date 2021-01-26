@@ -7,12 +7,8 @@ import { api } from 'src/environments/apis';
 
 @Injectable()
 export class CatalogsService {
-  private readonly catalogApi: string;
-  private readonly linenSearchByNameApi: string;
 
   constructor(private http: HttpClient) {
-    this.catalogApi = environment.apiUrl + 'catalog';
-    this.linenSearchByNameApi = environment.apiUrl + 'findByNameContainingIgnoreCase';
   }
 
 
@@ -24,7 +20,7 @@ export class CatalogsService {
 
   public findAllFilter(onlyAvailable: string): Observable<HttpResponse<any>> {
     const params = { onlyAvailable }
-    return this.http.get(this.catalogApi, {
+    return this.http.get(api.products, {
       params,
       observe: 'response'
     });
@@ -33,7 +29,7 @@ export class CatalogsService {
   public findLinenByNamePart(namePart: string): Observable<any> {
     const params = { namePart }
 
-    return this.http.get(this.linenSearchByNameApi, {
+    return this.http.get(api.products, {
       params,
       observe: 'response'
     }).pipe(

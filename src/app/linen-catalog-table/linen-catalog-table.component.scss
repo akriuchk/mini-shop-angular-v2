@@ -24,3 +24,25 @@ th.mat-header-cell {
 mat-form-field {
   margin-right: 12px;
 }
+
+.new {
+  // color: #f9a825;
+  // border: #f9a825;
+
+  margin: 1x;  
+  padding: 4px;  
+  // float: left;  
+  border-radius: 8px;  
+  border: 2px solid #f9a825;
+}
+
+.new-icon {
+  color: #f9a825;
+  transform: rotate(-180deg);
+
+  position: relative;
+  top: 7px;
+  // margin-left: -30px; /* optional */
+  display: inline-flex;
+  vertical-align: baseline;
+}

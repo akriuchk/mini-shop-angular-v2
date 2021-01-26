@@ -1,22 +1,23 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "shorts",
-            "smallAvailable": true,
-            "middleAvailable": false,
-            "euroAvailable": false,
-            "duoAvailable": false,
-            "images": []
-        },
-        {
-            "id": 2,
-            "name": "pants",
-            "smallAvailable": false,
-            "middleAvailable": false,
-            "euroAvailable": false,
-            "duoAvailable": true,
-            "images": []
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "shorts",
+      "smallAvailable": true,
+      "middleAvailable": false,
+      "euroAvailable": false,
+      "duoAvailable": false,
+      "images": []
+    },
+    {
+      "id": 2,
+      "name": "pants",
+      "smallAvailable": false,
+      "middleAvailable": false,
+      "euroAvailable": false,
+      "duoAvailable": true,
+      "images": []
+    }
+  ],
+  "files": {}
 }

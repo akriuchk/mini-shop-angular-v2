@@ -42,7 +42,5 @@ export class LinenCatalogTableComponent implements OnInit {
       catalog.linenDatasource.filter = value.trim().toLocaleLowerCase();
       catalog.linenDatasource.filter
     });
-
   }
-
 }
