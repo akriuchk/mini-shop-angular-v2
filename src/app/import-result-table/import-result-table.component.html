@@ -13,7 +13,7 @@
             <mat-table [dataSource]="category.updates" class="mat-elevation-z8">
                 <!-- name Column -->
                 <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef> name. </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
                     <mat-cell *matCellDef="let productUpdate"> {{productUpdate.name}}
                         <span *ngIf="productUpdate.isNew" class="new">Delivery!
                             <span class="material-icons new-icon">change_history</span>

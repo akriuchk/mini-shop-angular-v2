@@ -40,14 +40,15 @@ export class CatalogsService {
   }
 
 
-  catalogs: string[] = ['Vasilisa bjaz', 'Vasilisa satin', 'Disney', 'Perkal', 'Poplin']
+  catalogs: string[] = ['Vasilisa bjaz', 'Default']
 
   PARSER_MAP = {
     'Vasilisa bjaz': "VASILISA_BYAZ",
     'Vasilisa satin': 'DEFAULT',
     'Disney': 'DISNEY',
     'Perkal': 'DEFAULT',
-    'Poplin': 'DEFAULT'
+    'Poplin': 'DEFAULT',
+    'Default': 'DEFAULT'
   };
 
   public defCatalogType(selectedCatalog: string): string {

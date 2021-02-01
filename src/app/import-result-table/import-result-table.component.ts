@@ -15,14 +15,5 @@ export class ImportResultTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.importDto);
-
-    this.importDto.result.forEach(res => {
-      console.log(res.category.name);
-    })
-
   }
-
-
-
 }
