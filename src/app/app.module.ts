@@ -30,6 +30,7 @@ import {
   MatSlideToggleModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule
 } from "@angular/material";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TutorPageComponent } from './tutor-page/tutor-page.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
@@ -37,6 +38,8 @@ import { LoginComponent } from './login/login.component';
 import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
 import { ImportResultTableComponent } from './import-result-table/import-result-table.component';
 import { AvailabilityStatusIconComponent } from './availability-status-icon/availability-status-icon.component';
+import { ImageSuggestionsComponent } from './image-suggestions/image-suggestions.component';
+import { ProductImageSuggestionService } from './services/product-image-suggestion.service';
 
 
 
@@ -53,7 +56,8 @@ import { AvailabilityStatusIconComponent } from './availability-status-icon/avai
     EditProductComponent,
     LoginComponent,
     ImportResultTableComponent,
-    AvailabilityStatusIconComponent
+    AvailabilityStatusIconComponent,
+    ImageSuggestionsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -66,6 +70,7 @@ import { AvailabilityStatusIconComponent } from './availability-status-icon/avai
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatChipsModule,
     MatDialogModule,
     MatExpansionModule,
@@ -87,6 +92,7 @@ import { AvailabilityStatusIconComponent } from './availability-status-icon/avai
   providers: [
     CatalogsService,
     FileUploadService,
+    ProductImageSuggestionService,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

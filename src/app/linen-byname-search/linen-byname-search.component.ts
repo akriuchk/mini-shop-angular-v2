@@ -17,6 +17,8 @@ export class LinenBynameSearchComponent implements OnInit {
 
   public selectedLinen: Product
 
+  constructor(private catalogService: CatalogsService) { }
+
   lookup(value: string): Observable<Product> {
     return this.catalogService.findLinenByNamePart(value.toLowerCase()).pipe(
       map(results => results)
@@ -47,6 +49,4 @@ export class LinenBynameSearchComponent implements OnInit {
       })
     );
   }
-
-  constructor(private catalogService: CatalogsService) { }
 }

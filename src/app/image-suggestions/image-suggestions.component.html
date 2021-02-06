@@ -1,0 +1,36 @@
+<p>image-suggestions works!</p>
+<div *ngIf="suggestProductImages">
+    <p>image-suggestions works2!</p>
+
+    <ng-container *ngFor="let product of suggestProductImages">
+        <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start " class="container padding:5px"
+            ngDefaultControl>
+            <!-- <h2>{{product.name}}</h2> -->
+            <!-- <h3>{{product.category}}</h3> -->
+            <ng-container>
+                <div fxLayout="column" fxLayout.lt-sm="column " fxLayoutAlign="flex-start "
+                    class="container padding:5px" ngDefaultControl>
+
+                    <p class="mat-title ">Product: {{product.name}}</p>
+                    <p>{{product.category}}</p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngFor="let image of product.images">
+
+                <mat-card class="card" fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) ">
+                    <img mat-card-image [src]="imageUrl(image)" />
+                    <mat-card-content>
+                        <label>{{image.filename}}</label>
+                        <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)"></mat-checkbox>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+        <mat-divider></mat-divider>
+    </ng-container>
+
+    <button mat-button (click)="confirmAndSend()" aria-label="Show an example snack-bar">
+        Pizza party
+      </button>
+</div>

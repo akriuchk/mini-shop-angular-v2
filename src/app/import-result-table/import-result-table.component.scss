@@ -1,22 +1,22 @@
 .new {
-    // color: #f9a825;
-    // border: #f9a825;
-  
-    padding: 4px;  
-    // float: left;  
-    border-radius: 8px;  
-    border: 2px solid #f9a825;
-    margin-left: 8px; 
-    display: inline-flex;
-  }
-  
-  .new-icon {
-    color: #f9a825;
-    transform: rotate(-180deg);
-  
-    position: relative;
-    top: 7px;
-    // margin-left: -30px; /* optional */
-    display: inline-flex;
-    vertical-align: baseline;
-  }
+  // color: #f9a825;
+  // border: #f9a825;
+
+  padding: 4px;
+  // float: left;
+  border-radius: 8px;
+  border: 2px solid #f9a825;
+  margin-left: 8px;
+  display: inline-flex;
+}
+
+.new-icon {
+  color: #f9a825;
+  transform: rotate(-180deg);
+
+  position: relative;
+  top: 7px;
+  // margin-left: -30px; /* optional */
+  display: inline-flex;
+  vertical-align: baseline;
+}
