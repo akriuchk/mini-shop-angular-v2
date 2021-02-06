@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { api } from "../../environments/apis";
 import { Image } from "../model/image";
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -23,10 +24,11 @@ export class ImagesService {
     return `${api.images}/${id}/raw`
   }
 
-  public patchImages(images: Image[]) {
+  public patchImages(images: Image[]): Observable<any> {
     const url = `${api.images}`;
-    return this.http.patch(url, images)
-      .subscribe(v => console.log(v))
-      ;
+    return this.http.patch(url, images).pipe(
+      tap(_ => console.log(_.toString())),
+      catchError(_ => of(_))
+    );
   }
 }

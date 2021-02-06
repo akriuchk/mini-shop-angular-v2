@@ -5,12 +5,24 @@
 }
 
 .card {
-    max-width: 400px;
-    // padding:5px;
-    margin: 16px;
-
+  max-width: 400px;
+  // padding:5px;
+  margin: 16px;
 }
 
 .header-image {
-    background-size: cover;
+  background-size: cover;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100
 }

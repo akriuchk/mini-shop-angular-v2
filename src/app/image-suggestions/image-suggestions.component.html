@@ -1,6 +1,6 @@
-<p>image-suggestions works!</p>
-<div *ngIf="suggestProductImages">
-    <p>image-suggestions works2!</p>
+<p>Img-sug component here!</p>
+<div *ngIf="suggestProductImages && suggestProductImages.length != 0">
+    <p>with data!</p>
 
     <ng-container *ngFor="let product of suggestProductImages">
         <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start " class="container padding:5px"
@@ -19,18 +19,23 @@
             <ng-container *ngFor="let image of product.images">
 
                 <mat-card class="card" fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) ">
-                    <img mat-card-image [src]="imageUrl(image)" />
                     <mat-card-content>
-                        <label>{{image.filename}}</label>
-                        <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)"></mat-checkbox>
+                        <img mat-card-image [src]="imageUrl(image)" />
                     </mat-card-content>
+                    <mat-card-actions>
+                        <div fxLayout="row wrap ">
+                            <label>{{image.filename}}</label>
+                            <span class="fill-remaining-space"></span>
+                            <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)">Select this pic </mat-checkbox>
+                        </div>
+                    </mat-card-actions>
                 </mat-card>
             </ng-container>
         </div>
         <mat-divider></mat-divider>
     </ng-container>
 
-    <button mat-button (click)="confirmAndSend()" aria-label="Show an example snack-bar">
-        Pizza party
+    <button mat-fab color="primary" class="fab-container" (click)="confirmAndSend()" aria-label="Show an example snack-bar">
+        Submit
       </button>
 </div>

@@ -50,7 +50,13 @@ export class ImageSuggestionsComponent implements OnInit {
       .filter(entry => entry[1] === true)
       .map(entry => entry[0])
 
-    this.imageService.patchImages(arr)
+    this.imageService.patchImages(arr).subscribe(_ => {
+      this.suggestionService.getSuggestions().pipe()
+      .subscribe(response => {
+        this.suggestProductImages = response.body;
+      }, error => {
+        //log it
+      });
+    })
   }
-
 }
