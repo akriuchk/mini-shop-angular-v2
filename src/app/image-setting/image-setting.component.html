@@ -1,0 +1,31 @@
+<p>Img-set component here!</p>
+
+<div *ngIf="orphanImages && orphanImages.length != 0">
+    <p>with data!</p>
+
+    <ng-container *ngFor="let img of orphanImages">
+        <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start " class="container padding:5px"
+            ngDefaultControl>
+            <mat-card class="card" fxFlex="0 1 calc(33.3% - 32px) " fxFlex.lt-md="0 1 calc(50% - 32px) ">
+                <mat-card-content>
+                    <img mat-card-image [src]="imageUrl(img)" />
+                </mat-card-content>
+                <mat-card-actions>
+                    <div fxLayout="row wrap ">
+                        <label>{{img.filename}}</label>
+                        <span class="fill-remaining-space"></span>
+                        <!-- <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)">Select this pic -->
+                        <!-- </mat-checkbox> -->
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+            <app-linen-byname-search (selectedProductEvent) = "setProductForImage(img, $event)" ></app-linen-byname-search>
+        </div>
+        <mat-divider></mat-divider>
+    </ng-container>
+
+    <button mat-fab color="primary" class="fab-container" (click)="confirmAndSend()"
+        aria-label="Show an example snack-bar">
+        Submit
+    </button>
+</div>

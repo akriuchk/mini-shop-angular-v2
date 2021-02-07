@@ -28,7 +28,7 @@ import { LinenBynameSearchComponent } from './linen-byname-search/linen-byname-s
 import {
   MatAutocompleteModule, MatChipsModule, MatDialog, MatDialogModule, MatInputModule, MatPaginatorModule,
   MatSlideToggleModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule
+  MatSortModule, MatTableModule, MatTabsModule
 } from "@angular/material";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -40,6 +40,8 @@ import { ImportResultTableComponent } from './import-result-table/import-result-
 import { AvailabilityStatusIconComponent } from './availability-status-icon/availability-status-icon.component';
 import { ImageSuggestionsComponent } from './image-suggestions/image-suggestions.component';
 import { ProductImageSuggestionService } from './services/product-image-suggestion.service';
+import { ImageProcessingComponent } from './image-processing/image-processing.component';
+import { ImageSettingComponent } from './image-setting/image-setting.component';
 
 
 
@@ -57,7 +59,9 @@ import { ProductImageSuggestionService } from './services/product-image-suggesti
     LoginComponent,
     ImportResultTableComponent,
     AvailabilityStatusIconComponent,
-    ImageSuggestionsComponent
+    ImageSuggestionsComponent,
+    ImageProcessingComponent,
+    ImageSettingComponent
   ],
   imports: [
     AppRoutingModule,
@@ -77,6 +81,7 @@ import { ProductImageSuggestionService } from './services/product-image-suggesti
     MatIconModule,
     MatInputModule,
     MatTableModule,
+    MatTabsModule,
     MatPaginatorModule,
     MatSortModule,
     MatGridListModule,

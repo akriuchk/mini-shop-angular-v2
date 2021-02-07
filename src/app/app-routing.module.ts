@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ImageProcessingComponent } from './image-processing/image-processing.component';
 import { ImageSuggestionsComponent } from './image-suggestions/image-suggestions.component';
 import { LinenBynameSearchComponent } from './linen-byname-search/linen-byname-search.component';
 import { LinenCatalogTableComponent } from './linen-catalog-table/linen-catalog-table.component';
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'tutor', component: TutorPageComponent },
   { path: 'signin', component: LoginComponent },
   { path: 'show-all', component: LinenCatalogTableComponent },
-  { path: 'image-suggestions', component: ImageSuggestionsComponent }
+  { path: 'image-suggestions', component: ImageProcessingComponent }
 ]
 
 @NgModule({

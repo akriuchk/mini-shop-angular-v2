@@ -11,8 +11,6 @@ export class ProductImageSuggestionService {
 
   constructor(private http: HttpClient) { }
 
-// /suggestedImages
-
   public getSuggestions(): Observable<HttpResponse<Product[]>>{
     const url = `${api.products}/suggestedImages`;
     return this.http.get<Product[]>(url, {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map, startWith, debounceTime, switchMap } from 'rxjs/operators';
@@ -15,7 +16,7 @@ export class LinenBynameSearchComponent implements OnInit {
   public linenAutocomplete: Observable<Product> = null;
   public autoCompleteControl = new FormControl();
 
-  public selectedLinen: Product
+  @Output() selectedProductEvent = new EventEmitter<string>();
 
   constructor(private catalogService: CatalogsService) { }
 
@@ -26,9 +27,7 @@ export class LinenBynameSearchComponent implements OnInit {
   }
 
   setLinen(event: MatAutocompleteSelectedEvent): void {
-    console.log('linen', event.option.viewValue);
-    
-    // this.selectedLinen = linen;
+    this.selectedProductEvent.emit(event.option.value);
   }
 
 

@@ -13,15 +13,22 @@ export class ImagesService {
   constructor(private http: HttpClient) {
   }
 
-  public get(id: number): Observable<HttpResponse<any>> {
+  public get(id: number): Observable<HttpResponse<Image>> {
     const url = `${api.images}/${id}`;
-    return this.http.get(url, {
+    return this.http.get<Image>(url, {
       observe: 'response'
     });
   }
 
   public getRawUrl(id: number): string {
     return `${api.images}/${id}/raw`
+  }
+
+  public getUnmatched(): Observable<HttpResponse<Image[]>> {
+    const url = `${api.images}/unmatched`;
+    return this.http.get<Image[]>(url, {
+      observe: 'response'
+    });
   }
 
   public patchImages(images: Image[]): Observable<any> {
@@ -31,4 +38,6 @@ export class ImagesService {
       catchError(_ => of(_))
     );
   }
+
+
 }

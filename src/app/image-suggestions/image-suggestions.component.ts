@@ -12,10 +12,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 })
 export class ImageSuggestionsComponent implements OnInit {
   suggestProductImages: Product[]
-  // decisionPatch: Image[] = []
   decisionPatch: Map<Image, boolean> = new Map();
-  //  descipt: {[image: Image]: boolean} = {};
-
 
   constructor(
     private suggestionService: ProductImageSuggestionService,

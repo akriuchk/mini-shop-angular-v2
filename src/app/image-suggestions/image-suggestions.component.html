@@ -1,4 +1,5 @@
 <p>Img-sug component here!</p>
+
 <div *ngIf="suggestProductImages && suggestProductImages.length != 0">
     <p>with data!</p>
 
@@ -26,7 +27,7 @@
                         <div fxLayout="row wrap ">
                             <label>{{image.filename}}</label>
                             <span class="fill-remaining-space"></span>
-                            <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)">Select this pic </mat-checkbox>
+                            <mat-checkbox (change)="onCheckBoxSelected(product, image, $event)">Select this pic</mat-checkbox>
                         </div>
                     </mat-card-actions>
                 </mat-card>
@@ -35,7 +36,8 @@
         <mat-divider></mat-divider>
     </ng-container>
 
-    <button mat-fab color="primary" class="fab-container" (click)="confirmAndSend()" aria-label="Show an example snack-bar">
+    <button mat-fab color="primary" class="fab-container" (click)="confirmAndSend()"
+        aria-label="Show an example snack-bar">
         Submit
-      </button>
+    </button>
 </div>
