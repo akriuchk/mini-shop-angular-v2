@@ -16,7 +16,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio'
 import { ItemCardComponent } from './item-card/item-card.component';
-import { CatalogPageComponent } from './second-page/second-page.component';
+import { CatalogPageComponent } from './product-list-cards/product-list-cards.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CatalogsService } from './services/catalogs.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -64,7 +64,6 @@ import { ImageSettingComponent } from './image-setting/image-setting.component';
     ImageSettingComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
@@ -93,6 +92,7 @@ import { ImageSettingComponent } from './image-setting/image-setting.component';
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [
     CatalogsService,

@@ -1,11 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
         <mat-toolbar>Menu</mat-toolbar>
-        <mat-nav-list >
-            <a mat-list-item *ngFor="let catalog of catalogList" (click)="onSelect(catalog)">{{catalog.displayName}}</a>
+        <mat-nav-list>
+            <a mat-list-item *ngFor="let catalog of catalogList" routerLinkActive="active"
+            [routerLink] = "['/catalog', catalog.name]">{{catalog.displayName}}</a>
             <mat-divider [inset]="false"></mat-divider>
             <a mat-list-item routerLink="/upload" routerLinkActive="active">Catalog upload</a>
-            <a mat-list-item routerLink="/catalog" routerLinkActive="active" [state]="selectedCatalog" >Show catalog</a>
             <a mat-list-item routerLink="/linenSearch" routerLinkActive="active">Search linen</a>
             <a mat-list-item routerLink="/tutor" routerLinkActive="active">Tutor page</a>
             <a mat-list-item routerLink="/show-all" routerLinkActive="active">Show all</a>
@@ -14,7 +15,8 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
-            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <span>mini-shop</span>
@@ -22,18 +24,13 @@
             <span>
                 <a mat-button routerLink="/signin" routerLinkActive="active">
                     <span class="material-icons">person</span>
-                    
+
                     <span *ngIf="!getUser()">Sign In</span>
                     <span *ngIf="getUser()">Hello, {{getUser().username}}</span>
-                
+
                 </a>
             </span>
         </mat-toolbar>
-        <!-- <second-page *ngIf="showOneCatalog" [catalog]="selectedCatalog"></second-page>
-        <file-upload-page *ngIf="showUploadPage" ></file-upload-page>
-        <app-linen-catalog-table *ngIf="showCatalogTable"></app-linen-catalog-table>
-        <app-linen-byname-search *ngIf="showLinenSearch"></app-linen-byname-search>
-        <app-tutor-page *ngIf="showTutorPage"></app-tutor-page > -->
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

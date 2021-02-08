@@ -1,15 +1,20 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Catalog } from '../model/catalog';
 import { Product } from '../model/linen';
+import { CatalogsService } from '../services/catalogs.service';
 
 @Component({
-  selector: 'second-page',
-  templateUrl: './second-page.component.html',
-  styleUrls: ['./second-page.component.scss']
+  selector: 'product-list-cards',
+  templateUrl: './product-list-cards.component.html',
+  styleUrls: ['./product-list-cards.component.scss']
 })
 export class CatalogPageComponent implements OnInit {
+  catalog$: Observable<Catalog>;
   catalog: Catalog;
+
   availableSizes = [
     { name: 'Small', selected: false },
     { name: 'Medium', selected: false },
@@ -18,15 +23,19 @@ export class CatalogPageComponent implements OnInit {
   ];
 
   constructor(
-    private router: Router) {
-    console.time('someFunction');
-    var s = this.router.getCurrentNavigation().extras.state;
-    // console.log(s);
-    this.catalog = new Catalog(s.id, s.name, s.displayName, s.products);
-    console.timeEnd('someFunction');
+    private route: ActivatedRoute,
+    private catalogService: CatalogsService
+  ) {
+    
   }
 
   ngOnInit() {
+    this.catalog$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.catalogService.getCategory(params.get('name')))
+    );
+
+    this.catalog$.subscribe( cat => this.catalog = cat)
   }
 
   getProductsFiltered(): Product[] {
