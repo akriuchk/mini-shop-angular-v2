@@ -38,8 +38,6 @@ export class ImageSuggestionsComponent implements OnInit {
     if (event.checked) {
       image.product = product.name;
     }
-    console.log(`Size: ${this.decisionPatch.size}`);
-    console.log(this.decisionPatch);
   }
 
   confirmAndSend(): void {
