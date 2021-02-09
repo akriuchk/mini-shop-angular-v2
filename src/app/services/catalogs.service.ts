@@ -5,26 +5,23 @@ import { environment } from 'src/environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
 import { api } from 'src/environments/apis';
 import { Catalog } from '../model/catalog';
+import { Product } from '../model/linen';
 
 @Injectable()
 export class CatalogsService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-
-  public findAll(): Observable<HttpResponse<any>> {
-    return this.http.get(api.categories, {
-      observe: 'response'
-    });
-  }
-
-  public findAllFilter(onlyAvailable: string): Observable<HttpResponse<any>> {
-    const params = { onlyAvailable }
-    return this.http.get(api.products, {
+  public findAllFilter(onlyAvailable = true): Observable<Catalog[]> {
+    const params = { "onlyAvailable": `${onlyAvailable}` }
+    return this.http.get<Catalog[]>(api.categories, {
       params,
       observe: 'response'
-    });
+    }).pipe(
+      map((res: HttpResponse<Catalog[]>) => {
+        return res.body;
+      })
+    )
   }
 
   getCategory(name: string): Observable<Catalog> {
@@ -36,14 +33,14 @@ export class CatalogsService {
     );
   }
 
-  public findLinenByNamePart(namePart: string): Observable<any> {
+  public findProductByNamePart(namePart: string): Observable<Product[]> {
     const params = { namePart }
 
     return this.http.get(api.products, {
       params,
       observe: 'response'
     }).pipe(
-      map((res: HttpResponse<any>) => {
+      map((res: HttpResponse<Product[]>) => {
         return res.body;
       })
     );

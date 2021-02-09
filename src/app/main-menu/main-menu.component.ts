@@ -17,20 +17,12 @@ export class MainMenuComponent implements OnInit {
   catalogList: Catalog[];
   selectedCatalog: Catalog;
 
-  /**
-   * onSelect
-   */
-  onSelect(catalog: Catalog): void {
-    this.selectedCatalog = catalog;
-  }
-
-
   ngOnInit(): void {
-    this.catalogService.findAll()
+    this.catalogService.findAllFilter()
       .pipe()
-      .subscribe((response: HttpResponse<any>) => {
-        if (response.body) {
-          this.catalogList = response.body;
+      .subscribe(response => {
+        if(response) {
+          this.catalogList = response;
         }
       });
   }

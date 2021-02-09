@@ -20,8 +20,8 @@ export class LinenBynameSearchComponent implements OnInit {
 
   constructor(private catalogService: CatalogsService) { }
 
-  lookup(value: string): Observable<Product> {
-    return this.catalogService.findLinenByNamePart(value.toLowerCase()).pipe(
+  lookup(value: string): Observable<Product[]> {
+    return this.catalogService.findProductByNamePart(value.toLowerCase()).pipe(
       map(results => results)
     );
   }

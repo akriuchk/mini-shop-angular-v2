@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Catalog } from '../model/catalog';
 import { Product } from '../model/linen';
 import { CatalogsService } from '../services/catalogs.service';
@@ -25,9 +25,7 @@ export class CatalogPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private catalogService: CatalogsService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.catalog$ = this.route.paramMap.pipe(

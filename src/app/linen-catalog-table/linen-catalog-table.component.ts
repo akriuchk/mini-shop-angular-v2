@@ -18,18 +18,18 @@ export class LinenCatalogTableComponent implements OnInit {
   constructor(private catalogService: CatalogsService) { }
 
   ngOnInit() {
-    this.catalogService.findAll()
+    this.catalogService.findAllFilter(false)
       .pipe()
-      .subscribe((response: HttpResponse<any>) => {
-        if (response.body) {
-          this.catalogsInput = response.body;
+      .subscribe(response => {
+        if (response) {
+          this.catalogsInput = response;
           Array.from(this.catalogsInput).forEach(catalog => {
             catalog.linenDatasource = new MatTableDataSource(catalog.products);
           });
         }
-      });
-
+      })
   }
+  
   ngAfterViewInit(): void {
     //TODO FIXME sorting doesn't work now :(
     // Array.from(this.catalogsInput).forEach(catalog => {

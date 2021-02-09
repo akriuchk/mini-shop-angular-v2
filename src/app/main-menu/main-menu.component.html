@@ -24,10 +24,8 @@
             <span>
                 <a mat-button routerLink="/signin" routerLinkActive="active">
                     <span class="material-icons">person</span>
-
                     <span *ngIf="!getUser()">Sign In</span>
                     <span *ngIf="getUser()">Hello, {{getUser().username}}</span>
-
                 </a>
             </span>
         </mat-toolbar>
