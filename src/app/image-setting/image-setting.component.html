@@ -1,8 +1,8 @@
-<p>Img-set component here!</p>
+<div *ngIf="!orphanImages || orphanImages.length == 0">
+    Everything is clean and shiny
+</div>
 
 <div *ngIf="orphanImages && orphanImages.length != 0">
-    <p>with data!</p>
-
     <ng-container *ngFor="let img of orphanImages">
         <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start " class="container padding:5px"
             ngDefaultControl>

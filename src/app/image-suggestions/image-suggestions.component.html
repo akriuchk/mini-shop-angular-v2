@@ -1,8 +1,7 @@
-<p>Img-sug component here!</p>
-
+<div *ngIf="!suggestProductImages || suggestProductImages.length == 0">
+    Everything is clean and shiny
+</div>
 <div *ngIf="suggestProductImages && suggestProductImages.length != 0">
-    <p>with data!</p>
-
     <ng-container *ngFor="let product of suggestProductImages">
         <div fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutAlign="flex-start " class="container padding:5px"
             ngDefaultControl>
