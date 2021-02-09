@@ -3,6 +3,8 @@ import { Product } from '../model/linen';
 import { MatDialog } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
 import { api } from 'src/environments/apis';
+import { User } from '../model/user';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-item-card',
@@ -16,7 +18,9 @@ export class ItemCardComponent implements OnInit {
   imageUrl: string;
 
   constructor(
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     if (this.product.images.length != 0) {
@@ -39,4 +43,8 @@ export class ItemCardComponent implements OnInit {
     });
   }
 
+
+  getUser(): User {
+    return this.authService.currentUserValue;
+  }
 }

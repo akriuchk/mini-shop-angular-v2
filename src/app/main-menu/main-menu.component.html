@@ -6,11 +6,11 @@
             <a mat-list-item *ngFor="let catalog of catalogList" routerLinkActive="active"
             [routerLink] = "['/catalog', catalog.name]">{{catalog.displayName}}</a>
             <mat-divider [inset]="false"></mat-divider>
-            <a mat-list-item routerLink="/upload" routerLinkActive="active">Catalog upload</a>
+            <a *ngIf="getUser()" mat-list-item routerLink="/upload" routerLinkActive="active">Catalog upload</a>
             <a mat-list-item routerLink="/linenSearch" routerLinkActive="active">Search linen</a>
-            <a mat-list-item routerLink="/tutor" routerLinkActive="active">Tutor page</a>
-            <a mat-list-item routerLink="/show-all" routerLinkActive="active">Show all</a>
-            <a mat-list-item routerLink="/image-suggestions" routerLinkActive="active">Check images</a>
+            <a *ngIf="getUser()" mat-list-item routerLink="/tutor" routerLinkActive="active">Tutor page</a>
+            <a *ngIf="getUser()" mat-list-item routerLink="/show-all" routerLinkActive="active">Show all</a>
+            <a *ngIf="getUser()" mat-list-item routerLink="/image-suggestions" routerLinkActive="active">Check images</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

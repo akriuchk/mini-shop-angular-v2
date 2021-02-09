@@ -31,5 +31,5 @@
         </button>
     </div>
 
-    <button mat-button (click)="openDialog()"><mat-icon class="icon-color-stop ">create</mat-icon><span>EDIT</span></button>
+    <button mat-button (click)="openDialog()" *ngIf="getUser()"><mat-icon class="icon-color-stop ">create</mat-icon><span>EDIT</span></button>
 </mat-card>
