@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { api } from 'src/environments/apis';
 import { Product } from '../model/linen';
+import { CatalogsService } from '../services/catalogs.service';
+import { ImagesService } from '../services/images.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -12,11 +14,14 @@ import { Product } from '../model/linen';
 export class EditProductComponent implements OnInit {
   formGroup: FormGroup;
   imageUrl: string;
+  newProductImage: File = null;
 
   constructor(
     public dialogRef: MatDialogRef<EditProductComponent>,
     @Inject(MAT_DIALOG_DATA) public product: Product,
-    formBuilder: FormBuilder
+    formBuilder: FormBuilder,
+    private imageService: ImagesService,
+    private catalogService: CatalogsService
   ) {
     this.formGroup = formBuilder.group({
       smallAvailable: this.product.smallAvailable,
@@ -26,6 +31,11 @@ export class EditProductComponent implements OnInit {
     });
   }
 
+  handleFileSelect(files: FileList) {
+    this.newProductImage = files[0];
+    // this.cleanErrorMsg();
+  }
+
   onSaveClick(): void {
     this.product.smallAvailable = this.formGroup.value.smallAvailable;
     this.product.middleAvailable = this.formGroup.value.middleAvailable;
@@ -33,6 +43,11 @@ export class EditProductComponent implements OnInit {
     this.product.euroAvailable = this.formGroup.value.euroAvailable;
 
     console.log(this.product);
+
+    if (this.newProductImage) {
+      this.imageService.postFile(this.newProductImage, this.product.name).subscribe(resp => resp);
+    }
+    this.catalogService.updateProduct(this.product).subscribe(resp => resp);
     this.dialogRef.close();
   }
 

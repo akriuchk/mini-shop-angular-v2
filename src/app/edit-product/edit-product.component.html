@@ -1,5 +1,5 @@
-<mat-card class="example-card">
-    <img mat-card-image [src]="imageUrl" alt="Photo of a item Inu " />
+<mat-card class="card">
+    <img mat-card-image [src]="imageUrl" (error)="set404forImage()" />
     <mat-card-content>
         <p class="mat-title ">{{product.name}}</p>
     </mat-card-content>
@@ -7,44 +7,58 @@
     <td></td>
 
 
-    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSaveClick()">
-        <table >
-                <tr>
-                    <td>SMALL</td>
-                    <td>
-                        <mat-slide-toggle [labelPosition]="'before'" formControlName="smallAvailable"
-                            [checked]="product.middleAvailable"></mat-slide-toggle>
-                    </td>
-                </tr>
+    <form [formGroup]="formGroup" (ngSubmit)="onSaveClick()">
+        <table>
+            <tr>
+                <td>SMALL</td>
+                <td>
+                    <mat-slide-toggle [labelPosition]="'before'" formControlName="smallAvailable"
+                        [checked]="product.middleAvailable"></mat-slide-toggle>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>MEDIUM</td>
-                    <td>
-                        <mat-slide-toggle [labelPosition]="'before'" formControlName="middleAvailable"
-                            [checked]="product.middleAvailable"></mat-slide-toggle>
-                    </td>
-                </tr>
+            <tr>
+                <td>MEDIUM</td>
+                <td>
+                    <mat-slide-toggle [labelPosition]="'before'" formControlName="middleAvailable"
+                        [checked]="product.middleAvailable"></mat-slide-toggle>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>DUO</td>
-                    <td>
-                        <mat-slide-toggle [labelPosition]="'before'" formControlName="duoAvailable"
-                            [checked]="product.duoAvailable">
-                        </mat-slide-toggle>
-                    </td>
-                </tr>
+            <tr>
+                <td>DUO</td>
+                <td>
+                    <mat-slide-toggle [labelPosition]="'before'" formControlName="duoAvailable"
+                        [checked]="product.duoAvailable">
+                    </mat-slide-toggle>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>EURO</td>
-                    <td>
-                        <mat-slide-toggle [labelPosition]="'before'" formControlName="euroAvailable"
-                            [checked]="product.euroAvailable">
-                        </mat-slide-toggle>
-                    </td>
-                </tr>
+            <tr>
+                <td>EURO</td>
+                <td>
+                    <mat-slide-toggle [labelPosition]="'before'" formControlName="euroAvailable"
+                        [checked]="product.euroAvailable">
+                    </mat-slide-toggle>
+                </td>
+            </tr>
+
+            <div fxLayout="column" fxLayoutAlign="center" class="container padding:5px" (click)="fileInput.click()">
+                <!-- <div *ngIf="!newProductImage; else fileSelectedTemplate" mat-button>
+                    Click here to upload file!
+                </div> -->
+                <button type="button" *ngIf="!newProductImage; else fileSelectedTemplate" mat-raised-button color="primary">
+                    Click here to upload file!</button>
+                <ng-template #fileSelectedTemplate>
+                    <div>{{newProductImage.name}}</div>
+                </ng-template>
+                <input hidden type="file" accept="image/*" #fileInput (change)="handleFileSelect($event.target.files)">
+                <!-- <ng-container *ngIf="errorMessage">{{errorMessage}}</ng-container> -->
+            </div>
+
 
         </table>
-        <button mat-button  type="submit">
+        <button mat-button type="submit" > 
             <mat-icon class="icon-color-ok ">done</mat-icon>
             <span>SAVE</span>
         </button>

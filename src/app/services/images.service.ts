@@ -13,6 +13,14 @@ export class ImagesService {
   constructor(private http: HttpClient) {
   }
 
+  postFile(file: File, product: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('product', product);
+
+    return this.http.post(api.images, formData);
+  }
+
   public get(id: number): Observable<HttpResponse<Image>> {
     const url = `${api.images}/${id}`;
     return this.http.get<Image>(url, {

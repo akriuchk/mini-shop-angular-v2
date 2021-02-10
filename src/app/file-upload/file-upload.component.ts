@@ -35,7 +35,6 @@ export class FileUploadComponent implements OnInit {
   handleFileSelect(files: FileList) {
     this.fileToUpload = files[0];
     this.cleanErrorMsg();
-    console.log("file selected: " + this.fileToUpload)
   }
 
   startFileUpload() {

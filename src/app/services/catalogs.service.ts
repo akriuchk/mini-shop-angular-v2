@@ -46,6 +46,15 @@ export class CatalogsService {
     );
   }
 
+  public updateProduct(product: Product) {
+    const url = `${api.products}/${product.id}`;
+    this.log(`request ${url}`)
+    return this.http.post(url, product).pipe(
+      tap(_ => this.log(`updated product, name=${product.name}`)),
+      catchError(this.handleError(`updateProduct name=${product.name}`))
+    );
+  }
+
 
   catalogs: string[] = ['Vasilisa bjaz', 'Default']
 
