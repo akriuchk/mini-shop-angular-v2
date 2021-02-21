@@ -104,7 +104,7 @@
               "browserTarget": "mini-shop:build:production"
             },
             "staging": {
-              "browserTarget": "mini-shop:build:production"
+              "browserTarget": "mini-shop:build:staging"
             }
           }
         },
